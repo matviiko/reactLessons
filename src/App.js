@@ -5,10 +5,11 @@ import Car from "./Car/Car";
 class App extends Component {
 
   render() {
-      console.log('Render')
 
     return (
         <div className="App">
+            <h1>{this.props.title}</h1>
+
           <Car />
         </div>
     );
