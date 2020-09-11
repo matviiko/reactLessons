@@ -2,13 +2,15 @@ import React from "react";
 import classes from "./FinishedQuiz.module.css"
 
 const FinishedQuiz = props => {
-    const successCount = Object.keys(props.result).reduce((total, key) => {
-        if (props.result[key] === 'success') {
+    const successCount = Object.keys(props.results).reduce((total, key) => {
+        if (props.results[key] === 'success') {
             total++;
         }
 
         return total;
     }, 0)
+
+    console.log(props.results)
 
     return (
         <div className={classes.FinishedQuiz}>
@@ -16,8 +18,8 @@ const FinishedQuiz = props => {
                 {props.quiz.map((quizItem, index) => {
                     const cls = [
                         'fa',
-                        props.result[quizItem.id] === 'error' ? 'fa-times' : 'fa-check',
-                        classes[props.result[quizItem.id]]
+                        props.results[quizItem.id] === 'error' ? 'fa-times' : 'fa-check',
+                        classes[props.results[quizItem.id]]
                     ]
 
                     return (
@@ -34,7 +36,7 @@ const FinishedQuiz = props => {
             <p>True {successCount} of {props.quiz.length}</p>
 
             <div>
-                <button>Restart</button>
+                <button onClick={props.onRetry}>Restart</button>
             </div>
         </div>
     )
