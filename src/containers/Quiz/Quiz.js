@@ -55,7 +55,6 @@ class Quiz extends Component {
                 answerState: {[answerId]: 'success'},
                 results
             });
-            debugger
             const timeout = window.setTimeout(() => {
                 if (this.isQuizFinished()) {
                     this.setState({
