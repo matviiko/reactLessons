@@ -3,6 +3,7 @@ import classes from "./QuizCreator.module.css"
 import Button from "../../components/UI/Button/Button";
 import {createControl} from "../../form/formFramework";
 import Input from "../../components/UI/Input/Input";
+import Select from "../../components/UI/Select/Select";
 
     function createOptionControl (number) {
         return createControl({
@@ -28,6 +29,7 @@ export default class QuizCreator extends Component {
 
     state = {
         quiz: [],
+        rightAnswerId: 1,
         formControls: createFormControl()
     }
 
@@ -70,6 +72,12 @@ export default class QuizCreator extends Component {
         })
     }
 
+    selectChangeHandler = event => {
+        this.setState({
+            rightAnswerId: +event.target.value
+        })
+    }
+
     render() {
         return (
             <div className={classes.QuizCreator}>
@@ -81,7 +89,17 @@ export default class QuizCreator extends Component {
                         {this.renderControls()}
 
 
-                        <select></select>
+                        <Select
+                        label={'Please enter order answer'}
+                        value={this.state.rightAnswerId}
+                        onChange={this.selectChangeHandler}
+                        options={[
+                            {text: 1, value: 1},
+                            {text: 2, value: 2},
+                            {text: 3, value: 3},
+                            {text: 4, value: 4}
+                        ]}
+                        />
 
                         <Button
                         type="primary"
