@@ -32,7 +32,7 @@ export default class QuizList extends Component {
 
             Object.keys(response.data).forEach((key, index) => {
                 quizes.push({
-                    id: index,
+                    id: key,
                     name: `Test ${index+1}`
                 })
             });
